@@ -51,6 +51,7 @@ See 'git help git' for an overview of the system.
 
 
 Main commands to contribute to this project:
+     dnf install git-all
      git clone git@github.com:AnsenIO/librehwInfra
      git status
      git add .
