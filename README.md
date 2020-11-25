@@ -70,6 +70,8 @@ Main commands to contribute to this project:
 ctl-sshfs.sh sshfs share management tool for the proxmox hosts, 
            #Version 0.1
            #use ctl-sshfs.sh to mount or unmount the sshfs shares home of ant, cent and horsehead, then chose an option to mount(1), unmount(2), or list (3) the shares.
+         
+         
 ==> for Raspberry Pi 4
 freq.sh allows to monitor the frequency and temperature of the CPU in addition it reports information from PS and FREE. written for bash. it requires vcgencmd
 volts.sh allows to monitor the voltage arriving to the CPU. written for bash. requires vcgencmd
