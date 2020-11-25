@@ -63,3 +63,16 @@ Main commands to contribute to this project:
      git commit
      
      git push
+     
+
+
+==> for proxmox hosts
+ctl-sshfs.sh sshfs share management tool for the proxmox hosts, 
+           #Version 0.1
+           #use ctl-sshfs.sh to mount or unmount the sshfs shares home of ant, cent and horsehead, then chose an option to mount(1), unmount(2), or list (3) the shares.
+==> for Raspberry Pi 4
+freq.sh allows to monitor the frequency and temperature of the CPU in addition it reports information from PS and FREE. written for bash. it requires vcgencmd
+volts.sh allows to monitor the voltage arriving to the CPU. written for bash. requires vcgencmd
+
+==> for Raspberry Pi Zero
+temp.py in kali linux for arm devices, it allows to monitor frequency and temperature in addition to information from PS and FREE. written on python 2.7.
