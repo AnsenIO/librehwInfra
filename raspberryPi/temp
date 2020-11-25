@@ -1,0 +1,71 @@
+#!/usr/bin/python2.7
+
+
+import os, time
+from sys import *
+
+####  capture the frequency
+def capture_freq():
+	freq= 'cat /sys/devices/system/cpu/cpufreq/policy0/cpuinfo_cur_freq'
+	freq= float(os.popen(freq).readline().strip())/1000
+	return freq
+
+####  capture the temperature
+def capture_temp():
+	temp = 'cat /sys/class/thermal/thermal_zone0/temp'
+	temp = os.popen(temp).readline().strip()
+	temp = float(temp) / 1000
+	return temp
+
+####  capture the time
+def capture_time():
+	ctime = time.strftime('%R - %A, %d %h %Y')
+	return ctime
+
+####  capture the  free memory information
+def free():
+	free=""
+        for fr in os.popen('free -h'):
+               free += fr.strip() +'\n'
+	return free
+
+####  capture the first ten processes ordered by CPU utilization
+def ps():
+	pss=""
+        for ps in os.popen('ps auxck -pcpu  | head'):
+                pss += ps.strip()+'\n'
+	return pss
+
+####  build the string to be printed out
+def build_str():
+	temp= capture_temp()
+	freq= capture_freq()
+	ctime= capture_time()
+	freeMem= free()
+	processes= ps()
+	strAll = str('Time: ' + ctime + ' \n ' + 'CPU TEMP: ' + str(temp) + ' *C ' + 'Freq: ' + str(freq) + ' MHz \n\n               ' + freeMem + '\n\n' + processes + '\n')
+	return strAll
+
+####  prints the output based on the arguments provided in the command
+def main():
+	global i
+	print i
+	strAl=build_str()
+	if i >= 1:
+	        time.sleep(1)
+       		os.system('clear')
+	print(strAl)
+	i += 1
+
+#### evaluate if there are any argument. if not, execute once the main. if so, execute the main in loop
+i=0
+if len(argv) > 1:
+        if argv[1] == 'repeat' or argv[1] == 'r' or argv[1] == '-repeat' or argv[1] == '-r':
+		while True:
+			main()
+        if argv[1] == 'help' or argv[1] == 'h' or argv[1] == '-help' or argv[1] == '-h' :
+                print ''' This program is useful to check temperature and cpu frequency, 
+tested on Kali on Raspberry Pi Zero. \n Use the r argument to repeat the output in loop ex.: temp r \n'''
+
+else:
+	main()
